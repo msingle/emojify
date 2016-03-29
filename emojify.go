@@ -21,6 +21,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"os"
 	"regexp"
@@ -987,8 +988,16 @@ func emojify(maybe string) string {
 	}
 	return maybe
 }
+func help() {
+	fmt.Fprintf(os.Stderr, "emojify - emoji on the command line 😱\n")
+	fmt.Fprintf(os.Stderr, "Usage: emojify [-h] TEXT\n")
+	flag.PrintDefaults()
+}
+
 func main() {
-	ret := []string{}
+	flag.Usage = help
+	flag.Parse()
+	var ret []string
 	re := regexp.MustCompile("(:[a-zA-z0-9_-]+:)")
 	for _, arg := range os.Args[1:] {
 		ret = append(ret, re.ReplaceAllStringFunc(arg, emojify))
