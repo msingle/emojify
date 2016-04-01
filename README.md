@@ -1,3 +1,5 @@
+[![codebeat badge](https://codebeat.co/badges/6181c141-696b-40e8-8365-af5fa6b842b8)](https://codebeat.co/projects/github-com-msingle-emojify)
+
 emojify
 =======
 Emoji on the command line :scream:
