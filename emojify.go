@@ -995,8 +995,16 @@ func help() {
 }
 
 func main() {
+	all := flag.Bool("all", false, "display all")
 	flag.Usage = help
 	flag.Parse()
+	if *all {
+		for emoji, v := range emojis {
+
+			fmt.Fprintf(os.Stdout, "%s %s\n", emoji, v)
+		}
+		os.Exit(1)
+	}
 	var ret []string
 	re := regexp.MustCompile("(:[a-zA-z0-9_-]+:)")
 	for _, arg := range os.Args[1:] {
